@@ -2,7 +2,7 @@
 
 #bash filtro-requisicao.sh POST, GET, PUT, DELETE
 
-cd scripts-logs
+cd files
 
 if [ -z $1 ]
 then
