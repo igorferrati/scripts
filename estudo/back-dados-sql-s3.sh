@@ -18,6 +18,3 @@ done
 
 #s3
 aws s3 sync $home s3://bucket-name
-
-
-
