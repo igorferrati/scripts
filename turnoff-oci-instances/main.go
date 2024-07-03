@@ -34,8 +34,8 @@ type Config struct {
 	ShutDownProcess         ShutDownProcess `json:"ShutDownProcess"`
 }
 
-const jsonPath = "..\\GoGlobal0x\\teste.json"
-const key = ".\\igor-key.pem"
+const jsonPath = ""
+const key = ""
 
 func main() {
 	config, err := readJsonFiles(jsonPath)
@@ -51,7 +51,7 @@ func main() {
 	fmt.Println(teste)
 
 	if teste == false {
-		fmt.Println("Desligando instance")
+		fmt.Println("Turn off instance")
 
 		computeCliente, err := computeClienteOci(config.ShutDownProcess.User, config.ShutDownProcess.Fingerprint, config.ShutDownProcess.Tenancy, config.ShutDownProcess.Region, key, config.ShutDownProcess.CompartmentId)
 		if err != nil {
@@ -60,12 +60,12 @@ func main() {
 
 		turnOffInstance(computeCliente, config.ShutDownProcess.CompartmentId)
 	} else {
-		fmt.Println("O processo Octopus.exe existe")
+		fmt.Println("processo runing")
 	}
 }
 
 func readJsonFiles(jsonPath string) (Config, error) {
-	//mapenado a var para struct config
+	//mapeando a var para struct config
 	var config Config
 
 	jsonFile, err := os.ReadFile(jsonPath)
@@ -114,7 +114,7 @@ func computeClienteOci(user string, fingerprint string, tenancy string, region s
 func turnOffInstance(computeClient *core.ComputeClient, compartmentId string) error {
 
 	//nome da instance que deve desligar
-	instance_name := "teste-script"
+	instance_name := ""
 
 	//solicita listagem de instances no compartimentID e com Displayname via API
 	listInstancesRequest := core.ListInstancesRequest{
